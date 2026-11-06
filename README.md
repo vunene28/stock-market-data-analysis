@@ -2,99 +2,73 @@
 
 ## Overview
 
-This project analyses historical stock market data using Python to evaluate the performance and risk characteristics of an equally weighted portfolio of selected technology companies against the S&P 500 benchmark.
+This project analyses historical stock market data using Python. It examines the performance and risk of five major technology companies and compares an equally weighted portfolio against the S&P 500 benchmark.
 
-The project applies quantitative finance concepts, statistical analysis and data visualisation to explore investment performance, portfolio risk and market exposure.
+The analysis covers the period from January 2021 to December 2025.
 
-## Objectives
+## Project Objectives
 
-* Retrieve and analyse historical stock market data.
-* Calculate daily and cumulative returns.
-* Construct an equally weighted investment portfolio.
-* Measure portfolio risk and performance.
-* Compare portfolio performance against the S&P 500.
-* Calculate financial risk metrics.
-* Visualise financial data and communicate analytical findings.
-
-## Assets Analysed
-
-| Company   | Ticker |
-| --------- | ------ |
-| Apple     | AAPL   |
-| Microsoft | MSFT   |
-| NVIDIA    | NVDA   |
-| Amazon    | AMZN   |
-| Alphabet  | GOOGL  |
-
-**Benchmark:** S&P 500 (`^GSPC`)
-
-**Data period:** January 2021 – December 2025.
+- Collect historical stock market data.
+- Calculate daily stock returns.
+- Measure investment risk and performance.
+- Analyse portfolio performance against the S&P 500.
+- Calculate financial risk metrics.
+- Visualise market trends and portfolio performance.
+- Apply Python testing to verify calculations.
 
 ## Technologies Used
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* yfinance
-* Pytest
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- yfinance
+- Pytest
 
-## Methodology
+## Stocks Analysed
 
-### Data Collection
+The project examines the following companies:
 
-Historical adjusted stock price data was retrieved using Yahoo Finance through the `yfinance` Python library.
+- Apple (AAPL)
+- Microsoft (MSFT)
+- NVIDIA (NVDA)
+- Amazon (AMZN)
+- Alphabet (GOOGL)
 
-### Portfolio Construction
+The S&P 500 (^GSPC) is used as the benchmark.
 
-An equally weighted portfolio was constructed using five technology stocks, with each asset assigned a weight of 20%.
+## Financial Metrics
 
-The portfolio uses daily rebalancing when calculating daily portfolio returns.
+The project calculates:
 
-### Financial Performance Metrics
+- Daily Returns
+- Cumulative Returns
+- Annualised Volatility
+- Sharpe Ratio
+- Maximum Drawdown
+- Beta
+- Alpha
+- Rolling Volatility
+- Correlation Matrix
 
-The following metrics were calculated:
-
-| Metric                | Purpose                                               |
-| --------------------- | ----------------------------------------------------- |
-| Daily Returns         | Measures daily percentage price changes.              |
-| Cumulative Returns    | Measures compounded investment performance.           |
-| Annualised Return     | Estimates annual investment performance.              |
-| Annualised Volatility | Measures variability in returns.                      |
-| Sharpe Ratio          | Evaluates returns relative to risk.                   |
-| Maximum Drawdown      | Measures the largest peak-to-trough decline.          |
-| Beta                  | Measures sensitivity to benchmark movements.          |
-| Alpha                 | Estimates performance relative to the CAPM benchmark. |
-
-The analysis assumes an annual risk-free rate of 4%.
-
-Annualised volatility uses 252 trading days.
+The portfolio is equally weighted, with each of the five stocks receiving a 20% allocation.
 
 ## Key Results
 
-| Metric                | Portfolio | S&P 500 |
-| --------------------- | --------: | ------: |
-| Cumulative Return     |   268.40% |  84.98% |
-| Annualised Return     |    30.19% |  13.80% |
-| Annualised Volatility |    28.22% |  16.96% |
-| Sharpe Ratio          |    0.9307 |  0.5824 |
-| Maximum Drawdown      |   -41.83% | -25.43% |
+The analysis produced the following portfolio results:
 
-Additional portfolio metrics:
+| Metric | Portfolio | S&P 500 |
+|---|---:|---:|
+| Cumulative Return | 268.40% | 84.98% |
+| Annualised Volatility | 28.22% | 16.96% |
+| Sharpe Ratio | 0.9307 | 0.5824 |
+| Maximum Drawdown | -41.83% | -25.43% |
+| Annualised Return | 30.19% | 13.80% |
 
-* **Beta:** 1.4634
-* **Alpha:** 11.85%
+The portfolio achieved a higher cumulative return than the benchmark over the selected period, while also experiencing higher volatility and a larger maximum drawdown.
 
-### Interpretation
-
-The equally weighted technology portfolio achieved a higher historical return than the S&P 500 over the analysed period.
-
-However, it also experienced higher volatility and a larger maximum drawdown.
-
-Its beta of 1.4634 indicates greater sensitivity to benchmark movements.
-
-Historical performance does not guarantee future results. The analysis does not account for transaction costs, taxes or other real-world trading expenses.
+These results are historical and do not guarantee future performance.
 
 ## Project Structure
 
@@ -102,7 +76,27 @@ Historical performance does not guarantee future results. The analysis does not 
 stock-market-data-analysis/
 │
 ├── data/
+│   ├── correlation_matrix.csv
+│   ├── cumulative_returns.csv
+│   ├── daily_returns.csv
+│   ├── final_performance_report.csv
+│   ├── portfolio_performance_summary.csv
+│   ├── portfolio_returns.csv
+│   ├── portfolio_rolling_volatility.csv
+│   ├── portfolio_vs_benchmark.csv
+│   ├── portfolio_vs_benchmark_summary.csv
+│   └── stock_prices.csv
+│
 ├── figures/
+│   ├── annualised_volatility.png
+│   ├── correlation_heatmap.png
+│   ├── cumulative_returns.png
+│   ├── portfolio_vs_benchmark.png
+│   ├── risk_return_comparison.png
+│   └── rolling_volatility.png
+│
+├── notebooks/
+│
 ├── src/
 │   ├── analysis.py
 │   ├── download_data.py
@@ -110,77 +104,52 @@ stock-market-data-analysis/
 │   └── test_calculations.py
 │
 ├── .gitignore
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
-## Installation and Setup
+## Installation and Usage
 
-Clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/vunene28/stock-market-data-analysis.git
 ```
 
-Navigate into the project:
+### 2. Navigate into the project
 
 ```bash
 cd stock-market-data-analysis
 ```
 
-Create a virtual environment:
+### 3. Install dependencies
 
 ```bash
-python -m venv .venv
+pip install -r requirements.txt
 ```
 
-Activate it on Windows PowerShell:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-Install dependencies:
-
-```bash
-pip install numpy pandas matplotlib seaborn yfinance pytest
-```
-
-Run the analysis:
+### 4. Download and analyse the data
 
 ```bash
 python src/download_data.py
 ```
 
-Run automated tests:
+### 5. Run the tests
 
 ```bash
-python -m pytest -vv
+python -m pytest -v
 ```
 
 ## Testing
 
-The project includes six automated tests using Pytest:
+The project includes automated tests using Pytest to verify the financial calculation functions.
 
-* Daily returns
-* Cumulative returns
-* Annualised volatility
-* Maximum drawdown
-* Beta
-* Sharpe ratio
-
-**Current test status: 6 tests passed.**
-
-## Future Improvements
-
-* Implement Markowitz Mean-Variance Portfolio Optimisation.
-* Calculate Value at Risk (VaR) and Conditional Value at Risk (CVaR).
-* Introduce rolling volatility and rolling Sharpe ratio analysis.
-* Explore Monte Carlo simulations.
-* Develop a portfolio performance dashboard.
-* Compare alternative portfolio weighting strategies.
+Latest test result: **7 tests passed.**
 
 ## Author
 
-Developed as part of my exploration of quantitative finance, financial engineering and data-driven investment analysis.
+**Vunene Mahambane**
 
-**GitHub:** [vunene28](https://github.com/vunene28)
+BSc Mathematical and Computer Sciences Student
+
+Interested in quantitative finance, financial engineering, and data analysis.

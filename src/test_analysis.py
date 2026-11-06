@@ -61,3 +61,8 @@ print("\n6. BETA")
 print(beta)
 
 print("\nALL TESTS COMPLETED!")
+
+def calculate_rolling_volatility(returns, window=30):
+    rolling_volatility = returns.rolling(window=window).std() * np.sqrt(252)
+
+    return rolling_volatility

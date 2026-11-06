@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from analysis import calculate_rolling_volatility
 
 # ==========================================
 # 1. STOCKS AND HISTORICAL PERIOD
@@ -192,6 +193,50 @@ portfolio_returns.to_csv("data/portfolio_returns.csv")
 
 print("\nEqual-Weighted Portfolio Daily Returns:")
 print(portfolio_returns.head())
+
+# ==========================================
+# 12. CALCULATE 30-DAY ROLLING VOLATILITY
+# ==========================================
+
+rolling_volatility = calculate_rolling_volatility(
+    portfolio_returns,
+    window=30
+)
+
+# Save rolling volatility
+rolling_volatility.to_csv(
+    "data/portfolio_rolling_volatility.csv"
+)
+
+print("\n30-Day Rolling Annualised Volatility:")
+print(rolling_volatility.tail())
+
+# ==========================================
+# 13. PLOT ROLLING VOLATILITY
+# ==========================================
+
+plt.figure(figsize=(12, 6))
+
+plt.plot(
+    rolling_volatility.index,
+    rolling_volatility * 100,
+    label="30-Day Rolling Volatility"
+)
+
+plt.title("Portfolio 30-Day Rolling Annualised Volatility (2021–2025)")
+plt.xlabel("Date")
+plt.ylabel("Annualised Volatility (%)")
+
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+
+plt.savefig("figures/rolling_volatility.png")
+
+plt.show()
+plt.close()
+
+print("\nRolling volatility graph saved successfully!")
 
 
 # ==========================================
